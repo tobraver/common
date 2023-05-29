@@ -10,7 +10,7 @@
         catch(std::exception& e){ std::cout << e.what() << std::endl; } \
         catch(...){ std::cout << "unknow exception!" << std::endl; }
 
-#define COMMON_API  inline
+#define COMMON_JSON_API  inline
 
 using Json = nlohmann::json;
 
@@ -18,7 +18,7 @@ namespace common
 {
     namespace json
     {
-        COMMON_API bool parse(const std::string& str, Json& value)
+        COMMON_JSON_API bool parse(const std::string& str, Json& value)
         {
             JSON_TRY_START
                 value = Json::parse(str);
@@ -27,17 +27,17 @@ namespace common
             return false;
         }
 
-        COMMON_API std::string dump(const Json& value)
+        COMMON_JSON_API std::string dump(const Json& value)
         {
             return value.dump();
         }
 
-        COMMON_API std::string dump_fmt(const Json& value, int space)
+        COMMON_JSON_API std::string dump_fmt(const Json& value, int space)
         {
             return value.dump(space);
         }
 
-        COMMON_API bool to_bool(const Json& value)
+        COMMON_JSON_API bool to_bool(const Json& value)
         {
             bool r = false;
             if(value.is_boolean())
@@ -49,7 +49,7 @@ namespace common
             return r;
         }
 
-        COMMON_API int32_t to_int32(const Json& value)
+        COMMON_JSON_API int32_t to_int32(const Json& value)
         {
             int32_t r = 0;
             if(value.is_boolean())
@@ -61,7 +61,7 @@ namespace common
             return r;
         }
 
-        COMMON_API uint32_t to_uint32(const Json& value)
+        COMMON_JSON_API uint32_t to_uint32(const Json& value)
         {
             uint32_t r = 0;
             if(value.is_boolean())
@@ -73,7 +73,7 @@ namespace common
             return r;
         }
         
-        COMMON_API float to_float(const Json& value)
+        COMMON_JSON_API float to_float(const Json& value)
         {
             float r = 0;
             if(value.is_boolean())
@@ -85,7 +85,7 @@ namespace common
             return r;
         }
 
-        COMMON_API std::string to_string(const Json& value)
+        COMMON_JSON_API std::string to_string(const Json& value)
         {
             std::string r = "";
             if(value.is_string())
